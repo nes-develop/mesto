@@ -10,3 +10,16 @@
 @import url(../blocks/header/header.css);
 /* лого шапки сайта */
 @import url(../blocks/header/__logo/header__logo.css);
+/* секция profile */
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__add-item/profile__add-item.css);
+@import url(../blocks/profile/__avatar/profile____avatar.css);
+@import url(../blocks/profile/__edit-form/profile__edit-form.css);
+@import url(../blocks/profile/__form/profile__form.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__title/profile__title.css);
+/* стили для кнопки */
+@import url(../blocks/button/button.css);
+
+

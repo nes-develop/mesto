@@ -1,0 +1,16 @@
+.profile__form {
+    margin: 0;
+    height: 48px;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 0 18px;
+  }
+
+
+  @media screen and (min-width: 320px) and (max-width: 1152px) {
+    .profile__form {
+      justify-content: center;
+    }
+  }
+  

@@ -1,0 +1,18 @@
+.profile__info {
+    max-width: 336px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    gap: 16px 0;
+    position: relative;
+    font-style: normal;
+  }
+
+  @media screen and (max-width: 320px) {
+    .profile__info {
+      text-align: center;
+      margin-top: 22.5px;
+    }
+  }
+  
