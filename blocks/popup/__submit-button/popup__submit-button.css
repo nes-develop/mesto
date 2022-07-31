@@ -9,6 +9,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 1);
+    box-sizing: border-box;
+    border-style: none;
+    color: rgba(255, 255, 255, 1);
 }
 
 @media screen and (max-width: 320px) {
@@ -21,6 +26,6 @@
 }
 
 .popup__submit-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    border: rgba(0, 0, 0, 0.8);
+    opacity: 80%;
+    transform: 2s ease-in-out;
 }
