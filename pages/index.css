@@ -30,6 +30,9 @@
 @import url(../blocks/elements/__item/elements__item.css);
 @import url(../blocks/elements/__list-cards/elements__list-cards.css);
 @import url(../blocks/elements/__card-like/_active/elements__card-like_active.css);
+/* блок footer */
+@import url(../blocks/footer/footer.css);
+
 
 
 
