@@ -32,6 +32,13 @@
 @import url(../blocks/elements/__card-like/_active/elements__card-like_active.css);
 /* блок footer */
 @import url(../blocks/footer/footer.css);
+/* секция popup */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__submit-button/popup__submit-button.css);
+@import url(../blocks/popup/__title/popup__title.css);
 
 
 
