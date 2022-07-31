@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
 </head>
+
 <body class="page">
     <!-- шапка сайта -->
     <header class="header">
@@ -25,6 +27,60 @@
                 <p class="profile__title">Исследователь океана</p>
             </div>
             <button class="profile__add-item button" type="button"></button>
+        </section>
+        <!-- секция elements -->
+        <section class="elements">
+            <!-- функции по добавлению пока нет, 6 статических карт -->
+            <ul class="elements__list-cards">
+                <!-- 1 карточка -->
+                <li class="elements__card">
+                    <img class="elements__card-image" src="./images/cards/moscow_city.jpeg" alt="">
+                    <div class="elements__item">
+                        <h2 class="elements__card-title">Москва</h2>
+                        <button class="elements__card-like"></button>
+                    </div>
+                </li>
+                <!-- 2 карточка -->
+                <li class="elements__card">
+                    <img class="elements__card-image" src="./images/cards/sochi.jpeg" alt="">
+                    <div class="elements__item">
+                        <h2 class="elements__card-title">Сочи</h2>
+                        <button class="elements__card-like"></button>
+                    </div>
+                </li>
+                <!-- 3 карточка -->
+                <li class="elements__card">
+                    <img class="elements__card-image" src="./images/cards/st-pterburg.jpeg" alt="">
+                    <div class="elements__item">
+                        <h2 class="elements__card-title">Санкт-Петербург</h2>
+                        <button class="elements__card-like"></button>
+                    </div>
+                </li>
+                <!-- 4 карточка -->
+                <li class="elements__card">
+                    <img class="elements__card-image" src="./images/cards/kazan.jpeg" alt="">
+                    <div class="elements__item">
+                        <h2 class="elements__card-title">Казань</h2>
+                        <button class="elements__card-like"></button>
+                    </div>
+                </li>
+            <!-- 5 карточка -->
+                <li class="elements__card">
+                    <img class="elements__card-image" src="./images/cards/milan.jpeg" alt="">
+                    <div class="elements__item">
+                        <h2 class="elements__card-title">Милан</h2>
+                        <button class="elements__card-like"></button>
+                    </div>
+                </li>
+            <!-- 6 карточка -->
+                <li class="elements__card">
+                    <img class="elements__card-image" src="./images/cards/vladivostok.jpeg" alt="">
+                    <div class="elements__item">
+                        <h2 class="elements__card-title">Владивосток</h2>
+                        <button class="elements__card-like"></button>
+                    </div>
+                </li>
+            </ul>
         </section>
     </main>
 </body>
