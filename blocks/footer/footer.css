@@ -8,8 +8,17 @@
     font-family: 'Inter', Arial, sans-serif;
   }
 
+  @media screen and (min-width: 768px) and (max-width: 1152px) {
+    .footer {
+      max-width: 300px;
+      margin: 57.5px calc((100% - 581px) / 2) 0;
+      font-size: 16px;
+      line-height: 19.5px;
+    }
+  }
   
-  @media screen and (max-width: 320px) {
+  
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     .footer {
       max-width: 282px;
       margin: 48px auto 0;

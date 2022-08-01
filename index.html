@@ -37,7 +37,7 @@
                     <img class="elements__card-image" src="./images/cards/moscow_city.jpeg" alt="">
                     <div class="elements__item">
                         <h2 class="elements__card-title">Москва</h2>
-                        <button class="elements__card-like"></button>
+                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <!-- 2 карточка -->
@@ -45,7 +45,7 @@
                     <img class="elements__card-image" src="./images/cards/sochi.jpeg" alt="">
                     <div class="elements__item">
                         <h2 class="elements__card-title">Сочи</h2>
-                        <button class="elements__card-like"></button>
+                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <!-- 3 карточка -->
@@ -53,7 +53,7 @@
                     <img class="elements__card-image" src="./images/cards/st-pterburg.jpeg" alt="">
                     <div class="elements__item">
                         <h2 class="elements__card-title">Санкт-Петербург</h2>
-                        <button class="elements__card-like"></button>
+                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <!-- 4 карточка -->
@@ -61,7 +61,7 @@
                     <img class="elements__card-image" src="./images/cards/kazan.jpeg" alt="">
                     <div class="elements__item">
                         <h2 class="elements__card-title">Казань</h2>
-                        <button class="elements__card-like"></button>
+                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <!-- 5 карточка -->
@@ -69,7 +69,7 @@
                     <img class="elements__card-image" src="./images/cards/milan.jpeg" alt="">
                     <div class="elements__item">
                         <h2 class="elements__card-title">Милан</h2>
-                        <button class="elements__card-like"></button>
+                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
                 <!-- 6 карточка -->
@@ -77,7 +77,7 @@
                     <img class="elements__card-image" src="./images/cards/vladivostok.jpeg" alt="">
                     <div class="elements__item">
                         <h2 class="elements__card-title">Владивосток</h2>
-                        <button class="elements__card-like"></button>
+                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
                     </div>
                 </li>
             </ul>
@@ -85,18 +85,21 @@
     </main>
     <!-- футер -->
     <footer class="footer" lang="en">
-        <p>© 2022 Mesto Russia</p>
+        <p class="footer__title">© 2022 Mesto Russia</p>
     </footer>
-    <article class="popup">
+    <div class="popup">
         <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__input" value="Жак-Ив Кусто" id="input-name">
-            <input class="popup__input" value="Исследователь океана" id="input-title">
-            <button class="popup__submit-button">Сохранить</button>
-            <button class="popup__close-button"></button>
+            <button class="popup__close-button" type="button"></button>
+            <form class="popup__content" name="post">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input class="popup__input popup__input_name" id="input-name" name="name" placeholder="Имя">
+                <input class="popup__input popup__input_title" id="input-title" name="info" placeholder="О себе">
+                <button class="popup__submit-button" type="submit">Сохранить</button>
+            </form>
         </div>
-    </article>
-    <script src="./pages/script.js">
+    </div>
+    <script src="./scripts/script.js">
     </script>
 </body>
+
 </html>

@@ -16,7 +16,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 765px) {
     .popup__submit-button {
         font-size: 14px;
         line-height: 17px;

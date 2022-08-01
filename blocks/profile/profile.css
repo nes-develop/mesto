@@ -10,9 +10,23 @@
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 544px) and (max-width: 1152px) {
     .profile {
-        flex-direction: column;
-        align-items: center;
+      margin-top: 41px;
     }
-}
+  }
+  
+  @media screen and (min-width: 320px) and (max-width: 544px) {
+    .profile {
+      margin-top: 42px;
+      width: 88.125%;
+    }
+  }
+  
+  @media screen and (min-width: 320px) and (max-width: 1152px) {
+    .profile {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+

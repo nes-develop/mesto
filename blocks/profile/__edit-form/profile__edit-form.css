@@ -10,7 +10,16 @@
     align-self: flex-end;
 }
 
-@media screen and (max-width: 320px) {
+
+@media screen and (min-width: 544px) and (max-width: 1152px) {
+    .profile__edit-form {
+        margin-bottom: 5.5px;
+        width: 21px;
+        height: 21px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 544px) {
     .profile__edit-form {
         margin-bottom: 6px;
         width: 18px;

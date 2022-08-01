@@ -5,7 +5,7 @@
     position: absolute;
     background-image: url(./../../../images/close-icon.svg);
     background-size: contain;
-    background-color: #000;
+    background-color: transparent;
     border-style: none;
     background-repeat: no-repeat;
     right: -40px;
@@ -14,6 +14,15 @@
     line-height: 0;
     border: 0;
 }
+
+@media screen and (min-width: 544px) and (max-width: 1152px) {
+    .popup__close-button {
+      width: 26px;
+      height: 26px;
+      right: -40px;
+      top: -40px;
+    }
+  }
 
 @media screen and (max-width: 320px) {
     .popup__close-button {
@@ -26,6 +35,6 @@
 
 .popup__close-button:hover {
     opacity: 60%;
-    transform: 2s ease-in-out;
+    transition: .3s ease-in-out;
     cursor: pointer;
 }
