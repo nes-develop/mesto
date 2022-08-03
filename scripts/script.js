@@ -6,8 +6,8 @@ let popup = document.querySelector('.popup');
 let popupCloseButton = popup.querySelector('.popup__close-button');
 let popupFormElement = popup.querySelector('.popup__content');
 let popupSubmitButton = popupFormElement.querySelector('popup__submit-button');
-let popupInputName = popupFormElement.querySelector('.popup__input_name');
-let popupInputTitle = popupFormElement.querySelector('.popup__input_title');
+let popupInputName = popupFormElement.querySelector('.popup__input_btn_name');
+let popupInputTitle = popupFormElement.querySelector('.popup__input_btn_title');
 //переменные секции profile
 let profile = document.querySelector('.profile');
 let profileForm = profile.querySelector('profile__form');
@@ -37,5 +37,4 @@ function submitInfo(evt) {
     profileTitle.textContent = popupInputTitle.value;;
     closePopup();
 }
-
-popupSubmitButton.addEventListener('submit', submitInfo);
+popupFormElement.addEventListener('submit', submitInfo);
