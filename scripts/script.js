@@ -5,7 +5,6 @@ let content = page.querySelector('.content');
 let popup = document.querySelector('.popup');
 let popupCloseButton = popup.querySelector('.popup__close-button');
 let popupFormElement = popup.querySelector('.popup__content');
-let popupSubmitButton = popupFormElement.querySelector('popup__submit-button');
 let popupInputName = popupFormElement.querySelector('.popup__input_btn_name');
 let popupInputTitle = popupFormElement.querySelector('.popup__input_btn_title');
 //переменные секции profile

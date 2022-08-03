@@ -4,8 +4,6 @@
 @import url(../vendor/fonts/fonts.css);
 /*  общие настройки страницы */
 @import url(../blocks/page/page.css);
-/* блок контент */
-/* @import url(../blocks/content/content.css); */
 /* шапка сайта */
 @import url(../blocks/header/header.css);
 /* лого шапки сайта */
