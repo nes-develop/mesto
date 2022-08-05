@@ -21,13 +21,15 @@
 @import url(../blocks/button/button.css);
 /* секция с карточками - elements */
 @import url(../blocks/elements/elements.css);
-@import url(../blocks/elements/__card/elements__card.css);
-@import url(../blocks/elements/__card-image/elements__card-image.css);
-@import url(../blocks/elements/__card-like/elements__card-like.css);
-@import url(../blocks/elements/__card-title/elements__card-title.css);
 @import url(../blocks/elements/__item/elements__item.css);
-@import url(../blocks/elements/__list-cards/elements__list-cards.css);
-@import url(../blocks/elements/__card-like/_active/elements__card-like_active.css);
+/* карточки */
+@import url(../blocks/cards/__text/cards__text.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/__like/cards__like.css);
+@import url(../blocks/cards/__like/_active/cards__like_active.css);
+@import url(../blocks/cards/__title/cards__title.css);
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__delete/cards__delete.css);
 /* блок footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
@@ -40,3 +42,7 @@
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__subtitle/popup__subtitle.css);
+@import url(../blocks/popup/__container/_image/popup__container_image.css);
+@import url(../blocks/popup/_background/popup_background_black.css);

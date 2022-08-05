@@ -1,7 +1,17 @@
 .elements__item {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin: 0;
-    padding: 25px 15px 25px 21px;
-  }
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(282px, 282px));
+	justify-content: center;
+	row-gap: 20px;
+	column-gap: 17px;
+}
+
+@media screen and (max-width: 991px) {
+	.elements__items {
+		margin: 0 auto 48px auto;
+	}
+}

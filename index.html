@@ -30,74 +30,59 @@
         </section>
         <!-- секция elements -->
         <section class="elements">
-            <!-- функции по добавлению пока нет, 6 статических карт -->
-            <ul class="elements__list-cards">
-                <!-- 1 карточка -->
-                <li class="elements__card">
-                    <img class="elements__card-image" src="./images/cards/moscow_city.jpeg" alt="Москва">
-                    <div class="elements__item">
-                        <h2 class="elements__card-title">Москва</h2>
-                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <!-- 2 карточка -->
-                <li class="elements__card">
-                    <img class="elements__card-image" src="./images/cards/sochi.jpeg" alt="Сочи">
-                    <div class="elements__item">
-                        <h2 class="elements__card-title">Сочи</h2>
-                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <!-- 3 карточка -->
-                <li class="elements__card">
-                    <img class="elements__card-image" src="./images/cards/st-pterburg.jpeg" alt="Санкт-Петербург">
-                    <div class="elements__item">
-                        <h2 class="elements__card-title">Санкт-Петербург</h2>
-                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <!-- 4 карточка -->
-                <li class="elements__card">
-                    <img class="elements__card-image" src="./images/cards/kazan.jpeg" alt="Казань">
-                    <div class="elements__item">
-                        <h2 class="elements__card-title">Казань</h2>
-                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <!-- 5 карточка -->
-                <li class="elements__card">
-                    <img class="elements__card-image" src="./images/cards/milan.jpeg" alt="Милан">
-                    <div class="elements__item">
-                        <h2 class="elements__card-title">Милан</h2>
-                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <!-- 6 карточка -->
-                <li class="elements__card">
-                    <img class="elements__card-image" src="./images/cards/vladivostok.jpeg" alt="Владивосток">
-                    <div class="elements__item">
-                        <h2 class="elements__card-title">Владивосток</h2>
-                        <button class="elements__card-like" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-            </ul>
-        </section>
+			<ul class="elements__item">
+			</ul>
+		</section>
     </main>
     <!-- футер -->
     <footer class="footer" lang="en">
         <p class="footer__title">© 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <!-- попап для профиля -->
+    <div class="popup popup_edit">
         <div class="popup__container">
-            <button class="popup__close-button" type="button"></button>
+            <button class="popup__close-button" type="button" aria-label="закрытие окна"></button>
             <form class="popup__content" name="post">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__input popup__input_btn_name" id="input-name" name="name" placeholder="Имя">
-                <input class="popup__input popup__input_btn_title" id="input-title" name="info" placeholder="О себе">
+                <input class="popup__input popup__input_btn_name" name="name" placeholder="Имя">
+                <input class="popup__input popup__input_btn_title" name="info" placeholder="О себе">
                 <button class="popup__submit-button" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
+    <!--попап для добавления элемента-->
+    <div class="popup popup_add">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button" aria-label="закрытие окна"></button>
+            <form class="popup__content" name="editphoto">
+                <h2 class="popup__title">Новое место</h2>
+                <input class="popup__input popup__input_btn_destination" name="nameLink" placeholder="Название">
+                <input class="popup__input popup__input_btn_link" name="editlink" placeholder="Ссылка на картинку">
+                <button class="popup__submit-button" type="submit" aria-label="Создать">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <!--попап изображений-->
+    <div class="popup popup_image">
+        <div class="popup__container popup_background_black">
+            <button class="popup__close-button" type="button" aria-label="закрытие окна"></button>
+            <img src="" alt="" class="popup__image" />
+            <p class="popup__subtitle"></p>
+        </div>
+    </div>
+    <!-- template для изображений -->
+    <template class="template">
+        <li class="cards">
+            <button class="cards__delete"></button>
+            <img src="" alt="" class="cards__image" />
+            <div class="cards__text">
+                <h2 class="cards__title"></h2>
+                <button class="cards__like" type="button" aria-label="лайк"></button>
+            </div>
+        </li>
+    </template>
+    <!-- подключение js -->
     <script src="./scripts/script.js">
     </script>
 </body>
