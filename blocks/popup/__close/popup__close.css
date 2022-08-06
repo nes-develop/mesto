@@ -8,9 +8,8 @@
     background-position: center center;
     border: none;
     background-repeat: no-repeat;
-    right: -40px;
-    top: -40px;
-    padding: 0;
+    right: -38px;
+    top: -38px;
     transition: .3s ease-in-out;
 }
 
@@ -19,7 +18,6 @@
         width: 20px;
         height: 20px;
         right: 0px;
-        /* top: -36px; */
         background-size: 20px;
     }
 }
