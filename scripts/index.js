@@ -31,15 +31,16 @@ const popupImageSize = popupImage.querySelector('.popup__image');
 const popupSubtitle = popupImage.querySelector('.popup__subtitle');
 
 const buttonElement = document.querySelector('.popup__submit-button');
+const formAddBtnElement = formAdd.querySelector('.popup__submit-button');
 
 const validationConfig = {
     formSelector: '.popup__content',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__submit-button',
     inactiveButtonClass: 'popup__submit-button_invalid',
-	inputErrorClass: 'popup__input_invalid',
-	errorTextClass: 'popup__error',
-  };
+    inputErrorClass: 'popup__input_invalid',
+    errorTextClass: 'popup__error',
+};
 
 
 //функция для закрытия по Esc
@@ -138,7 +139,7 @@ formAdd.addEventListener('submit', function (event) {
 
 popupEditOpen.addEventListener('click', function () {
     openPopup(popupEdit);
-    //добавляем функцию из validate
+    // //добавляем функцию из validate
     activeButton(buttonElement, validationConfig);
     nameInput.value = popupName.textContent;
     professionInput.value = popupProf.textContent;
@@ -147,6 +148,11 @@ popupEditOpen.addEventListener('click', function () {
 popupAddOpen.addEventListener('click', function () {
     openPopup(popupAdd);
     formAdd.reset()
+    //отключаем кнопку после очистки формы
+    disabledButton(formAddBtnElement, validationConfig);
+    // formAddBtnElement.classList.add('popup__submit-button_invalid');
+    // formAddBtnElement.disabled = true;
+
 });
 
 popupEditClose.addEventListener('click', function () {

@@ -96,10 +96,10 @@ const enableValidation = (obj) => {
   const formList = Array.from(document.querySelectorAll(obj.formSelector));
   // добавляем слушатели 
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      // У каждой формы отменим стандартное поведение
-      evt.preventDefault();
-    });
+    // formElement.addEventListener('submit', (evt) => {
+    //   // У каждой формы отменим стандартное поведение
+    //   evt.preventDefault();
+    // });
     // Для каждой формы вызовем функцию setEventListeners,
     // передав ей элемент формы
     setEventListeners(formElement, obj);
