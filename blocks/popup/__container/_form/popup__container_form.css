@@ -1,6 +1,5 @@
 .popup__container_form {
 	width: 430px;
-	height: fit-content;
 }
 
 @media screen and (max-width: 580px) {

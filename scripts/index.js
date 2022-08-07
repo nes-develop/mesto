@@ -30,10 +30,22 @@ const cardsContainer = section.querySelector('.elements__item');
 const popupImageSize = popupImage.querySelector('.popup__image');
 const popupSubtitle = popupImage.querySelector('.popup__subtitle');
 
+const buttonElement = document.querySelector('.popup__submit-button');
+
+const validationConfig = {
+    formSelector: '.popup__content',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_invalid',
+	inputErrorClass: 'popup__input_invalid',
+	errorTextClass: 'popup__error',
+  };
+
+
 //функция для закрытия по Esc
 const pressBtnEsc = (evt) => {
-    //првоеряем нажата ли кнопка Esc === 27
-    if (evt.which === 27) {
+    //првоеряем нажата ли кнопка Esc, переписано на Escape
+    if (evt.key === 'Escape') {
         //ищем активный попап
         const activePopup = document.querySelector('.popup_opened');
         closePopup(activePopup);
@@ -118,12 +130,16 @@ formAdd.addEventListener('submit', function (event) {
 
     closePopup(popupAdd);
     cardsContainer.prepend(createCard(card));
+    //добавляем функцию из validate
+    disabledButton(buttonElement, validationConfig);
 
 });
 
 
 popupEditOpen.addEventListener('click', function () {
     openPopup(popupEdit);
+    //добавляем функцию из validate
+    activeButton(buttonElement, validationConfig);
     nameInput.value = popupName.textContent;
     professionInput.value = popupProf.textContent;
 });

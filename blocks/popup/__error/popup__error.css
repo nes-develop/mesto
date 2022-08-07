@@ -1,6 +1,5 @@
 .popup__error {
     margin: 0;
-    display: block;
     min-height: 30px;
     font-weight: 400;
     font-size: 12px;
@@ -8,4 +7,5 @@
     color: #ff0000;
     box-sizing: border-box;
     height: 12px;
+    position: absolute;
 }

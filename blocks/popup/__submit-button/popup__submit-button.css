@@ -11,8 +11,8 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
-    /*  */
-    /* margin-top: 18px; */
+    transition: opacity 0.5s ease;
+    margin-top: 48px;
 }
 
 @media screen and (max-width: 580px) {
@@ -22,11 +22,13 @@
         width: 238px;
         height: 46px;
         /*  */
-        margin-top: 25px;
+        margin-top: 45px;
     }
 }
 
 .popup__submit-button:hover {
     opacity: 80%;
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+	color: #ffffff;
 }
