@@ -1,6 +1,6 @@
 //import
 import { FormValidator } from './FormValidator.js';
-import { Card } from './cards.js';
+import { Card } from './Cards.js';
 const initialCards = [
     {
         name: 'Архыз',
@@ -62,7 +62,7 @@ const popupImageSize = popupImage.querySelector('.popup__image');
 const popupSubtitle = popupImage.querySelector('.popup__subtitle');
 
 // const buttonElement = document.querySelector('.popup__submit-button');
-// const formAddBtnElement = formAdd.querySelector('.popup__submit-button');
+const formAddBtnElement = formAdd.querySelector('.popup__submit-button');
 
 
 
@@ -76,8 +76,8 @@ const validationConfig = {
 };
 
 //создаем новые классы валидации
-const editFormValidator = new FormValidator(validationConfig, popupEdit);
-const addFormValidator = new FormValidator(validationConfig, popupAdd);
+const correctionFormValidator = new FormValidator(validationConfig, popupEdit);
+const additionFormValidator = new FormValidator(validationConfig, popupAdd);
 
 
 //оставляем, функция для закрытия по Esc
@@ -111,20 +111,23 @@ const closePopup = function (popup) {
 
 //выносим функцию
 const handleOpenPopup = (name, link) => {
-	popupSubtitle.textContent = name;
-	popupImageSize.alt = name;
-	popupImageSize.src = link;
-	openPopup(popupImage);
+    popupSubtitle.textContent = name;
+    popupImageSize.alt = name;
+    popupImageSize.src = link;
+    openPopup(popupImage);
 }
 
 //переписываем функцию создания карточки
 function createCard(item) {
     //используем класс Card
-	const card = new Card(item.name, item.link, handleOpenPopup);
+    const card = new Card(item.name, item.link, handleOpenPopup, '.template');
 
-	const cardElement = card.generateCard();
+    // const cardElement = card.generateCard();
+    // cardsContainer.prepend(cardElement)
+    card.generateCard();
+    card.renderCard(cardsContainer);
 
-	cardsContainer.prepend(cardElement)
+
 }
 
 //оставляем и дописываем editFormValidator
@@ -133,7 +136,7 @@ function submitForm(evt) {
     popupName.textContent = nameInput.value;
     popupProf.textContent = professionInput.value;
     closePopup(popupEdit);
-    editFormValidator.disabledButton()
+    correctionFormValidator.disabledButton()
 }
 
 
@@ -147,8 +150,8 @@ formAdd.addEventListener('submit', function (event) {
     };
 
     createCard(newCard);
-	closePopup(popupAdd);
-	addFormValidator.disabledButton()
+    closePopup(popupAdd);
+    additionFormValidator.disabledButton()
     // closePopup(popupAdd);
     // cardsContainer.prepend(createCard(card));
     // //добавляем функцию из validate
@@ -169,10 +172,10 @@ popupEditOpen.addEventListener('click', function () {
 popupAddOpen.addEventListener('click', function () {
     openPopup(popupAdd);
     formAdd.reset()
-    // //отключаем кнопку после очистки формы
+    // //отключаем кнопку после очистки формы, отрабатывает и без, проверено, заполнена форма, закрыта и открыта, кнопка не активна
     // disabledButton(formAddBtnElement, validationConfig);
-    // // formAddBtnElement.classList.add('popup__submit-button_invalid');
-    // // formAddBtnElement.disabled = true;
+    // formAddBtnElement.classList.add('popup__submit-button_invalid');
+    // formAddBtnElement.disabled = true;
 
 });
 //оставляем
@@ -195,8 +198,8 @@ popupImage.addEventListener('click', pressOnOverlay);
 
 popupForm.addEventListener('submit', submitForm);
 
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+correctionFormValidator.enableValidation();
+additionFormValidator.enableValidation();
 initialCards.forEach(createCard)
 
 
