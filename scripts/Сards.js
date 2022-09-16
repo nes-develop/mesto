@@ -4,18 +4,21 @@ export class Card {
 		this._link = link;
 		this._handleOpenPopup = handleOpenPopup;
 		this._templateSelector = templateSelector;
+		this._element = this._getCard();
 	}
 	//ниже описываем методы валидации карточки
 	//получаем шаблон
 	_getCard() {
-		const cardElement = document.querySelector(this._templateSelector)
+		const cardElement = document
+			.querySelector(this._templateSelector)
 			.content
+			.querySelector('.cards')
 			.cloneNode(true);
 		return cardElement;
 	}
 	//генерим карточку
 	generateCard() {
-		this._element = this._getCard();
+
 		this._cardDelete = this._element.querySelector('.cards__delete');
 		this._cardLike = this._element.querySelector('.cards__like');
 		this._cardImage = this._element.querySelector('.cards__image');
@@ -28,7 +31,9 @@ export class Card {
 		this._cardLike.addEventListener('click', () => {
 			this._handleLike(event)
 		});
-		this._cardDelete.addEventListener('click', this._handleDelete);
+		this._cardDelete.addEventListener('click', () => {
+			this._handleDelete(event)
+		});
 		// cardDelete.addEventListener('click', () => {
 		// 	this._handleDelete()
 		// });
@@ -40,20 +45,16 @@ export class Card {
 
 	}
 
-	renderCard(container) {
-		container.prepend(this._element);
-	}
 
 	//приватный метод ставим лайк
 	_handleLike(event) {
 		const buttonLike = event.target;
-		buttonLike.classList.toggle('cards__like_active');
+		this._cardLike.classList.toggle('cards__like_active');
 
 	}
 	//приватный метод удаления карточки
 	_handleDelete(event) {
-		this._cards = event.target.closest('.cards');
-		this._cards.remove();
+		this._element.remove();
 		this._element = null;
 	}
 

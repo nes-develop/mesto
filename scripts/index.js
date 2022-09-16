@@ -1,6 +1,6 @@
 //import
 import { FormValidator } from './FormValidator.js';
-import { Card } from './Cards.js';
+import { Card } from './Сards.js';
 const initialCards = [
     {
         name: 'Архыз',
@@ -120,15 +120,14 @@ const handleOpenPopup = (name, link) => {
 //переписываем функцию создания карточки
 function createCard(item) {
     //используем класс Card
-    const card = new Card(item.name, item.link, handleOpenPopup, '.template');
-
-    // const cardElement = card.generateCard();
-    // cardsContainer.prepend(cardElement)
-    card.generateCard();
-    card.renderCard(cardsContainer);
-
-
+    const card = new Card(item.name, item.link, handleOpenPopup, '.template').generateCard();
+    return card;
 }
+
+//добавление первоначальных карточек
+initialCards.forEach((item) => {
+    cardsContainer.append(createCard(item));
+});
 
 //оставляем и дописываем editFormValidator
 function submitForm(evt) {
@@ -140,16 +139,10 @@ function submitForm(evt) {
 }
 
 
-//редактируем, убираем валидацию
+//редактируем, убираем валидацию, форма добавления
 formAdd.addEventListener('submit', function (event) {
     event.preventDefault();
-
-    const newCard = {
-        name: cardInputName.value,
-        link: cardInputLink.value,
-    };
-
-    createCard(newCard);
+    cardsContainer.prepend(createCard({ name: cardInputName.value, link: cardInputLink.value }));
     closePopup(popupAdd);
     additionFormValidator.disabledButton()
     // closePopup(popupAdd);
@@ -170,12 +163,10 @@ popupEditOpen.addEventListener('click', function () {
 
 //редактируем, убираем валидацию
 popupAddOpen.addEventListener('click', function () {
+    // //отключаем кнопку после очистки формы
+    formAdd.reset();
+    additionFormValidator.disabledButton()
     openPopup(popupAdd);
-    formAdd.reset()
-    // //отключаем кнопку после очистки формы, отрабатывает и без, проверено, заполнена форма, закрыта и открыта, кнопка не активна
-    // disabledButton(formAddBtnElement, validationConfig);
-    // formAddBtnElement.classList.add('popup__submit-button_invalid');
-    // formAddBtnElement.disabled = true;
 
 });
 //оставляем
@@ -200,7 +191,8 @@ popupForm.addEventListener('submit', submitForm);
 
 correctionFormValidator.enableValidation();
 additionFormValidator.enableValidation();
-initialCards.forEach(createCard)
+
+// initialCards.forEach(createCard)
 
 
 // createInitialCards();
