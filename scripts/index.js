@@ -144,7 +144,6 @@ formAdd.addEventListener('submit', function (event) {
     event.preventDefault();
     cardsContainer.prepend(createCard({ name: cardInputName.value, link: cardInputLink.value }));
     closePopup(popupAdd);
-    additionFormValidator.disabledButton()
     // closePopup(popupAdd);
     // cardsContainer.prepend(createCard(card));
     // //добавляем функцию из validate
