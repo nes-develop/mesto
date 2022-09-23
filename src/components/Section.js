@@ -1,17 +1,17 @@
 export class Section {
-	constructor({items, renderer}, container) {
+	constructor({ items, renderer }, selectorContainer) {
 		this._items = items; // items это массив initialCards.
-		this._renderer = renderer;
-		this._container = container;
+		this.renderer = renderer;
+		this._container = document.querySelector(selectorContainer);
 	}
 
 	renderItems() {
 		this._items.forEach((item) => {
-			this._renderer(item);
+			this.renderer(item);
 		});
 	}
 
-	addItem(element) {
-		this._container.prepend(element);
+	addItem(cardData) {
+		this._container.prepend(cardData);
 	}
 }

@@ -9,7 +9,7 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 // module.exports — это синтаксис экспорта в Node.js 
 module.exports = {
   entry: {
-    main: './src/index.js' // указали первое место, куда заглянет webpack, — файл index.js в папке src
+    main: './src/pages/index.js' // указали первое место, куда заглянет webpack, — файл index.js в папке src
   },
   output: { // указали в какой файл будет собираться весь js и дали ему имя 
     path: path.resolve(__dirname, 'dist'),
