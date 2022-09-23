@@ -24,19 +24,37 @@ import {
 } from '../utils/constants.js';
 
 //Создание карточки
-function createCard(item) {
-    const card = new Card(item, '.template', handleCardClick);
-    defaultCardList.addItem(card.generateCard());
+const createCard = (item) => {
+    const card = new Card(item, '.template', () => {
+        handleCardClick;
+    });
+    return card.generateCard()
 }
+
+//old
+// function createCard(item) {
+//     const card = new Card(item, '.template', handleCardClick);
+//     defaultCardList.addItem(card.generateCard());
+// }
 
 //добавление карточек при загрузке
 const defaultCardList = new Section({
     items: initialCards,
-    renderer: createCard
+    renderer: (item) => {
+        const cardElement = createCard(item);
+        defaultCardList.addItem(cardElement)
+    },
 },
-    cardsContainer);
+    cardsContainer
+);
+//old
+// const defaultCardList = new Section({
+//     items: initialCards,
+//     renderer: createCard
+// },
+//     cardsContainer);
 
-defaultCardList.renderItems(initialCards);
+defaultCardList.renderItems();
 
 //popup с картинкой
 const imageViewPopup = new PopupWithImage(popupImage);
@@ -48,23 +66,31 @@ function handleCardClick(name, link) {
 
 
 //popup добавления карточки
-const addCardPopup = new PopupWithForm(popupAdd, (dataInputs) => {
-    defaultCardList.renderer(dataInputs);//
-});
+const cardAddPopup = new PopupWithForm(popupAdd, (item) => { 
+    const newCard = createCard(item); 
+    defaultCardList.addItem(newCard); 
+    cardAddPopup.close(); 
+    validatorPopupAdd.disableSubmitButton(); 
+}); 
 
-addCardPopup.setEventListeners();
+//old
+// const cardAddPopup = new PopupWithForm(popupAdd, (dataInputs) => {
+//     defaultCardList.renderer(dataInputs);//
+// });
+
+cardAddPopup.setEventListeners();
 
 //
 popupAddOpen.addEventListener('click', function () {
     validatorPopupAdd.cleanError();
     //оставляем функцию disable, тк при заполнении формы и переоткрытии можно создать пустые
     validatorPopupAdd.disableSubmitButton(popupSubmitButton);
-    addCardPopup.open();
+    cardAddPopup.open();
 
 });
 
 //popup редактирования профиля
-const user = new UserInfo({ NameSelector: popupName, AboutSelector: popupProf });
+const user = new UserInfo({ nameSelector: popupName, aboutSelector: popupProf });
 const editProfilePopup = new PopupWithForm(popupEdit, (dataInputs) => {
     user.setUserInfo(dataInputs);
 });
