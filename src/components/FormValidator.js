@@ -32,14 +32,14 @@ export class FormValidator {
 	_showInputError(inputElement, errorMessage) {
 		this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
 		inputElement.classList.add(this._config.inputErrorSelector);
-		this._errorElement.classList.add(this._config.errorSelector);
+		this._errorElement.classList.add(this._config.errorTextClass);
 		this._errorElement.textContent = errorMessage; //
 	}
 
 	_hideInputError(inputElement) {
 		this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
 		inputElement.classList.remove(this._config.inputErrorSelector);
-		this._errorElement.classList.remove(this._config.errorSelector); //
+		this._errorElement.classList.remove(this._config.errorTextClass); //
 		this._errorElement.textContent = '';
 	}
 

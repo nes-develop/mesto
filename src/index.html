@@ -43,10 +43,10 @@
             <form class="popup__content popup__content_add" name="popup__content-add-card" novalidate>
                 <input class="popup__input popup__input_btn_destination" type="text" id='input-place' name="name"
                     placeholder="Название" required minlength="2" maxlength="30">
-                <span class="popup__error link-error"></span>
+                <span class="popup__error input-place-error"></span>
                 <input class="popup__input popup__input_btn_link" type="url" name="link" id='input-link'
                     placeholder="Ссылка на картинку" required>
-                <span class="popup__error urlLink-error"></span>
+                <span class="popup__error input-link-error"></span>
 
                 <button class="popup__submit-button" id="button-submit-add" type="submit"
                     aria-label="Создать">Создать</button> <!-- del popup__submit-button_invalid and disable-->
@@ -62,10 +62,10 @@
             <form class="popup__content popup__content_edit" name="popup__content_edit-profile" novalidate>
                 <input class="popup__input popup__input_btn_name" type="text" name="lastName" id='input-name'
                     placeholder="Имя" required minlength="2" maxlength="40">
-                <span class="popup__error name-error"></span>
+                <span class="input-name-error popup__error name-error"></span>
                 <input class="popup__input popup__input_btn_title" type="text" name="about" id='input-proff'
                     placeholder="О себе" required minlength="2" maxlength="200">
-                <span class="popup__error about-error"></span>
+                <span class="input-proff-error popup__error about-error"></span>
                 <button class="popup__submit-button" type="submit">Сохранить</button>
                 <!-- del popup__submit-button_invalid and disable-->
             </form>

@@ -26,7 +26,7 @@ import {
 //Создание карточки
 const createCard = (item) => {
     const card = new Card(item, '.template', () => {
-        handleCardClick;
+        handleCardClick(item.name, item.link);
     });
     return card.generateCard()
 }
