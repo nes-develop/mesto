@@ -3,11 +3,13 @@
 ## Социальная сеть по обмену фотографиями
 
 ### Стек технологий
-* HTML5
-* CSS
-* JavaScript
+**Design**
+* Figma
+**Frontend**
+* HTML5, CSS6, JavaScript
+**Backend**
+* NodeJS, Webpack
 
-**Figma**
 
 * [Ссылка на проект GitHub Pages. ](https://nes-develop.github.io/mesto/)
 
