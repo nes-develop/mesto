@@ -3,11 +3,17 @@
 ## Социальная сеть по обмену фотографиями
 
 ### Стек технологий
+
 **Design**
+
 * Figma
+
 **Frontend**
+
 * HTML5, CSS6, JavaScript
+
 **Backend**
+
 * NodeJS, Webpack
 
 
