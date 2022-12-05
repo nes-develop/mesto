@@ -2,7 +2,8 @@ export class FormValidator {
 	constructor(config, form) {
 		this._config = config;
 		this._form = form;
-
+		this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
+		this._buttonElement = this._form.querySelector(this._config.submitButtonSelector);
 
 	}
 
@@ -12,7 +13,7 @@ export class FormValidator {
 
 	_setEventListeners() {
 		this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
-		
+
 		this._inputList.forEach((inputElement) => {
 			inputElement.addEventListener('input', () => {
 				this._toggleInputError(inputElement);
@@ -44,8 +45,6 @@ export class FormValidator {
 	}
 
 	_hasInvalidInput() {
-		this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
-		this._buttonElement = this._form.querySelector(this._config.submitButtonSelector);
 		return this._inputList.some((input) => {
 			return !input.validity.valid;
 		});
@@ -53,8 +52,9 @@ export class FormValidator {
 
 	_toggleButtonState() {
 		if (this._hasInvalidInput()) {
-			this._buttonElement.setAttribute('disabled', true);
-			this._buttonElement.classList.add(this._config.inactiveButtonClass);
+			this.disableSubmitButton();
+			// this._buttonElement.setAttribute('disabled', true);
+			// this._buttonElement.classList.add(this._config.inactiveButtonClass);
 		} else {
 			this._buttonElement.removeAttribute('disabled');
 			this._buttonElement.classList.remove(this._config.inactiveButtonClass);
@@ -73,9 +73,11 @@ export class FormValidator {
 	}
 
 
-	disableSubmitButton(button) {
-		button.setAttribute('disabled', true);
-		button.classList.add(`${this._config.inactiveButtonClass}`);
+	disableSubmitButton() {
+		this._buttonElement.setAttribute('disabled', true);
+		this._buttonElement.classList.add(`${this._config.inactiveButtonClass}`);
+		// button.setAttribute('disabled', true);
+		// button.classList.add(`${this._config.inactiveButtonClass}`);
 	}
 
 }
