@@ -15,5 +15,8 @@ export class UserInfo {
 		this._lastName.textContent = data.lastName;
 		this._about.textContent = data.about;
 	}
+	// setUserInfo(title, job) {
+	// 	this._lastName.textContent = title;
+	// 	this._about.textContent = job;
+	// }
 }
-

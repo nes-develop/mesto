@@ -17,7 +17,7 @@
     <main class="content">
         <!-- секция profile -->
         <section class="profile">
-            <img src="<%=require('./images/avatar.svg')%>" alt="Аватар автора" class="profile__avatar">
+            <img src="" alt="Аватар автора" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__title">Исследователь океана</p>
@@ -81,6 +81,18 @@
             <p class="popup__subtitle"></p>
         </div>
     </div>
+
+    <!-- попап подтверждения удаления -->
+    <div class="popup popup_delete">
+        <div class="popup__container popup__container_delete">
+            <button class="popup__close popup__close_image" type="button" aria-label="закрытие окна"></button>
+            <h2 class="popup__title popup__title_delete">Вы уверены?</h2>
+            <form class="popup__content __content_delete" novalidate>
+                <button class="popup__submit-button" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
+
     <!-- template для изображений -->
     <template class="template">
         <li class="cards">
@@ -88,7 +100,11 @@
             <img class="cards__image" src="#" alt="#" />
             <div class="cards__text">
                 <h2 class="cards__title"></h2>
-                <button class="cards__like" type="button" aria-label="лайк"></button>
+                <div class="cards__like_container">
+                    <button class="cards__like" type="button" aria-label="лайк"></button>
+                    <span class="cards__like_count"></span>
+                </div>
+
             </div>
         </li>
     </template>
