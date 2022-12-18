@@ -1,8 +1,8 @@
 import { Popup } from "./Popup.js";
 
 export class PopupWithForm extends Popup {
-	constructor(selectorPopup, handleSubmitForm) {
-		super(selectorPopup);
+	constructor(popup, handleSubmitForm) {
+		super(popup);
 		this._handleSubmitForm = handleSubmitForm;
 		//дубль из родительского класса
 		// this._popup = document.querySelector(selectorPopup);
@@ -11,21 +11,21 @@ export class PopupWithForm extends Popup {
 	}
 
 	_getInputValues() {
-		const formValues = {};
+		this._formValues = {};
 		//ищем 
 		this._inputList.forEach(input => {
 			//ищем по ключу name из верстки, делая массив руками и вставляем значение value
-			formValues[input.getAttribute('name')] = input.value;
+			this._formValues[input.getAttribute('name')] = input.value;
 		});
 
-		return formValues;
+		return this._formValues;
 	}
 
-	setInputValues(data) {
-		this._inputList.forEach((input) => {
-			input.value = data[input.name];
-		});
-	}
+	// setInputValues(data) {
+	// 	this._inputList.forEach((input) => {
+	// 		input.value = data[input.name];
+	// 	});
+	// }
 
 	setEventListeners() {
 		//вызываем родительский метод через super
@@ -33,7 +33,7 @@ export class PopupWithForm extends Popup {
 		this._popupForm.addEventListener('submit', (event) => {
 			event.preventDefault();
 			this._handleSubmitForm(this._getInputValues());
-			this.close();
+			// this.close();
 		})
 	}
 

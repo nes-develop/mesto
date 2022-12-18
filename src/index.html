@@ -19,8 +19,8 @@
         <section class="profile">
             <img src="" alt="Аватар автора" class="profile__avatar">
             <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <p class="profile__title">Исследователь океана</p>
+                <h1 class="profile__name"></h1>
+                <p class="profile__title"></p>
                 <button class="profile__edit-form button" type="button"></button>
             </div>
             <button class="profile__add-item button" type="button"></button>
@@ -60,10 +60,12 @@
             <button class="popup__close popup__close_edit" type="button" aria-label="закрытие окна"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__content popup__content_edit" name="popup__content_edit-profile" novalidate>
-                <input class="popup__input popup__input_btn_name" type="text" name="lastName" id='input-name'
+                <!-- поле ввода имя профиля -->
+                <input class="popup__input popup__input_btn_name" type="text" name="name" id='input-name'
                     placeholder="Имя" required minlength="2" maxlength="40">
                 <span class="input-name-error popup__error name-error"></span>
-                <input class="popup__input popup__input_btn_title" type="text" name="about" id='input-proff'
+                <!-- поле ввода работы -->
+                <input class="popup__input popup__input_btn_title" type="text" name="job" id='input-proff'
                     placeholder="О себе" required minlength="2" maxlength="200">
                 <span class="input-proff-error popup__error about-error"></span>
                 <button class="popup__submit-button" type="submit">Сохранить</button>

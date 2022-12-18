@@ -20,18 +20,18 @@ export const initialCards = [
 ];
 
 //переменные попапа 
-export const popupEdit = '.popup_edit'; //попап редактирования профиля
-export const popupAdd = '.popup_add'; //попап добавления карточки
-export const popupImage = '.popup_image';
+export const popupEdit = document.querySelector('.popup_edit'); //попап редактирования профиля
+export const popupAdd = document.querySelector('.popup_add'); //попап добавления карточки
+export const popupImage = document.querySelector('.popup_image');
 
 export const popupEditOpen = document.querySelector('.profile__edit-form');
 export const popupAddOpen = document.querySelector('.profile__add-item');
 
 //переменные профиля
 export const nameInput = document.querySelector('.popup__input_btn_name');
-export const popupName = '.profile__name';
+export const popupName =  document.querySelector('.profile__name');
 export const professionInput = document.querySelector('.popup__input_btn_title');
-export const popupProf = '.profile__title';
+export const popupProf = document.querySelector('.profile__title');
 export const popupForm = document.querySelector('.popup__content_edit');
 
 //попап добавления

@@ -4,8 +4,8 @@ class Api {
         this._headers = headers;
         this._baseUrl = baseUrl;
     }
-
-    getProfile() {
+    ////метод api для получения данных сервера об имени
+    getUserInfo() {
         //возвращаем запрос
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers
@@ -14,16 +14,49 @@ class Api {
             .catch(console.log)
     }
 
+    //метод api для получения карточек с сервера
     getInitialCards() {
         //возвращаем запрос  
-        return fetch(`${this._baseUrl}/cards `, {
+        return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers
         })
             .then(res => res.ok ? res.json() : Promise.reject(res.status))
             .catch(console.log)
     }
 
-    // другие методы работы с API
+    // метод api для корректировки профиля и отправки на сервер методом patch
+    editUserInfo(name, about) {
+        //возвращаем запрос  
+        return fetch(`${this._baseUrl}/users/me`, {
+            //меняем на сервере
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({
+                name,
+                about
+            })
+
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
+    // метод api для корректировки профиля и отправки на сервер методом patch
+    addCard(name, link) {
+        //возвращаем запрос  
+        return fetch(`${this._baseUrl}/cards`, {
+            //меняем на сервере
+            method: "POST",
+            headers: this._headers,
+            body: JSON.stringify({
+                name,
+                link
+            })
+
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
 }
 
 export const api = new Api({

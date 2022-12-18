@@ -8,10 +8,10 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { api } from '../components/Api.js';
 
-api.getProfile()
+api.getUserInfo()
     .then(res => {
-        console.log('ответ', res)
-        // UserInfo.setUserInfo(res.data.name, res.data.about)
+        //передаем по методу setUserInfo из класса UserInfo 
+        userInfo.setUserInfo(res.name, res.about);
     })
 
 
@@ -26,6 +26,8 @@ api.getInitialCards()
 import {
     cardsContainer,
     initialCards,
+    nameInput,
+    professionInput,
     popupForm,
     popupAdd,
     popupAddOpen,
@@ -82,9 +84,20 @@ function handleCardClick(name, link) {
 
 //popup добавления карточки
 const cardAddPopup = new PopupWithForm(popupAdd, (item) => {
-    const newCard = createCard(item);
-    defaultCardList.addItem(newCard);
-    cardAddPopup.close();
+
+
+    //добавляем api для добавление карточки
+    api.addCard(item.name, item.link)
+        .then(res => {
+            //создание карточки 
+            const newCard = createCard(res);
+            //добавление карточки через класс Section
+            defaultCardList.addItem(newCard);
+            cardAddPopup.close();
+        })
+
+
+
     validatorPopupAdd.disableSubmitButton();
 });
 
@@ -100,18 +113,31 @@ popupAddOpen.addEventListener('click', function () {
 });
 
 //popup редактирования профиля
-const user = new UserInfo({ nameSelector: popupName, aboutSelector: popupProf });
-const editProfilePopup = new PopupWithForm(popupEdit, (dataInputs) => {
-    //передаем по методу setUserInfo из класса UserInfo 
-    user.setUserInfo(dataInputs);
-});
+const userInfo = new UserInfo({ username: popupName, job: popupProf });
 
+//редактикирование профиля
+const editProfilePopup = new PopupWithForm(popupEdit, (data) => {
+    const { name, job } = data
+
+    //вызываем метод api корректировки профиля
+    api.editUserInfo(name, job)
+        .then(res => {
+            console.log('res', res)
+            //через метод setUserInfo из класса UserInfo ставим значениея по name и job 
+            userInfo.setUserInfo(name, job)
+
+            //добавил временно для закрытия попапа, перенес в then чтобы только после ответа
+            editProfilePopup.close()
+        })
+});
 editProfilePopup.setEventListeners();
 
 popupEditOpen.addEventListener('click', () => {
+
     //получаем методом getUserInfo из класса UserInfo значение из инпутов 
-    //методом setInputValues из класса PopupWithForm вставляем
-    editProfilePopup.setInputValues(user.getUserInfo());
+    const info = userInfo.getUserInfo();
+    nameInput.value = info.name;
+    professionInput.value = info.about;
     validatorPopupEdit.cleanError();
     editProfilePopup.open();
 });
