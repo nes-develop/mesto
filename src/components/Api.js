@@ -57,7 +57,28 @@ class Api {
             .then(res => res.ok ? res.json() : Promise.reject(res.status))
             .catch(console.log)
     }
+
+
+    // метод api для удаления карточки с сервера  методом patch
+    deleteCard(cardId) {
+        //возвращаем запрос  
+        return fetch(`${this._baseUrl}/cards/${cardId}`, {
+            //меняем на сервере
+            method: "DELETE",
+            headers: this._headers
+
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
+
+
+
+
 }
+
+
 
 export const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-55',

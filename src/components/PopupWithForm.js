@@ -27,6 +27,10 @@ export class PopupWithForm extends Popup {
 	// 	});
 	// }
 
+	changeSubmitHandler(newSubmitHandler) {
+		this._handleSubmit = newSubmitHandler;
+	}
+
 	setEventListeners() {
 		//вызываем родительский метод через super
 		super.setEventListeners();

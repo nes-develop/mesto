@@ -42,9 +42,9 @@ export const cardInputLink = document.querySelector('.popup__input_btn_link');
 export const popupSubmitButton = document.querySelector('.popup__submit-button')
 
 
-
-
-export const cardsContainer = '.elements__item';
+export const cardsContainer = document.querySelector('.elements__item');
+//попап подтверждения удаления
+export const popupDelete = document.querySelector('.popup_delete')
 
 export const validationConfig = {
     formSelector: '.popup__content',
