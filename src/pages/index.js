@@ -9,10 +9,14 @@ import { UserInfo } from '../components/UserInfo.js';
 import { api } from '../components/Api.js';
 import { PopupWithSubmitForm } from '../components/PopupWithSubmitForm.js';
 
+//переменная для уникального id пользователя
+let userId
+
 api.getUserInfo()
     .then(res => {
         //передаем по методу setUserInfo из класса UserInfo 
         userInfo.setUserInfo(res.name, res.about);
+        userId = res._id
     })
 
 
@@ -23,7 +27,9 @@ api.getInitialCards()
                 name: data.name,
                 link: data.link,
                 likes: data.likes,
-                id: data._id
+                id: data._id,
+                userId: userId,
+                ownerId: data.owner._id
             })
             defaultCardList.addItem(card)
         });
@@ -64,20 +70,39 @@ const createCard = (item) => {
     const card = new Card(
         item,
         '.template',
+        //функция открытия
         () => {
             handleCardClick(item.name, item.link);
         },
+        //функция открытия и подтверждения удаления карточки
         (id) => {
             deleteCardPopup.open()
             deleteCardPopup.changeSubmitHandler(() => {
                 api.deleteCard(id)
-                .then(res => {
-                    card.deleteCard()
-                    deleteCardPopup.close();
-                })
+                    .then(res => {
+                        card.deleteCard()
+                        deleteCardPopup.close();
+                    })
             })
-        }
-        );
+        },
+
+        (id) => {
+            if (card.isLiked()) {
+                //функция дизлайка
+                api.deleteLike(id)
+                    .then(res => {
+                        card.setLikes(res.likes)
+                    })
+                //функция запроса лайка
+            } else {
+                api.addLike(id)
+                    .then(res => {
+                        card.setLikes(res.likes)
+                    })
+            }
+        },
+
+    );
     return card.generateCard();
 }
 
@@ -90,7 +115,9 @@ const defaultCardList = new Section({
             name: data.name,
             link: data.link,
             likes: data.likes,
-            id: data._id
+            id: data._id,
+            userId: userId,
+            ownerId: data.owner._id
         })))
     }
 }, cardsContainer

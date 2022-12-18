@@ -24,7 +24,7 @@ class Api {
             .catch(console.log)
     }
 
-    // метод api для корректировки профиля и отправки на сервер методом patch
+    // метод api для корректировки профиля и отправки на сервер методом PATCH
     editUserInfo(name, about) {
         //возвращаем запрос  
         return fetch(`${this._baseUrl}/users/me`, {
@@ -41,7 +41,7 @@ class Api {
             .catch(console.log)
     }
 
-    // метод api для корректировки профиля и отправки на сервер методом patch
+    // метод api для корректировки профиля и отправки на сервер методом POST
     addCard(name, link) {
         //возвращаем запрос  
         return fetch(`${this._baseUrl}/cards`, {
@@ -59,10 +59,10 @@ class Api {
     }
 
 
-    // метод api для удаления карточки с сервера  методом patch
-    deleteCard(cardId) {
+    // метод api для удаления карточки с сервера  методом DELETE, id карточки подставляем через шаблон
+    deleteCard(id) {
         //возвращаем запрос  
-        return fetch(`${this._baseUrl}/cards/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
             //меняем на сервере
             method: "DELETE",
             headers: this._headers
@@ -71,6 +71,34 @@ class Api {
             .then(res => res.ok ? res.json() : Promise.reject(res.status))
             .catch(console.log)
     }
+
+    // метод api для удаления лайка с сервера  методом DELETE, id карточки подставляем через шаблон
+    deleteLike(id) {
+        //возвращаем запрос  
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+            //меняем на сервере
+            method: "DELETE",
+            headers: this._headers
+
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
+
+    // метод api для лайка с сервера  методом PUT, id карточки подставляем через шаблон
+    addLike(id) {
+        //возвращаем запрос  
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+            //меняем на сервере
+            method: "PUT",
+            headers: this._headers
+
+        })
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+            .catch(console.log)
+    }
+
 
 
 
