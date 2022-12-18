@@ -46,6 +46,10 @@ export const cardsContainer = document.querySelector('.elements__item');
 //попап подтверждения удаления
 export const popupDelete = document.querySelector('.popup_delete')
 
+//аватар
+export const popupAvatar = document.querySelector('.popup_avatar');
+export const avatarImage = document.querySelector('.profile__avatar');
+
 export const validationConfig = {
     formSelector: '.popup__content',
     inputSelector: '.popup__input',

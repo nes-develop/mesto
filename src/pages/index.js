@@ -51,18 +51,11 @@ import {
     popupProf,
     validationConfig,
     popupDelete,
+    popupAvatar,
+    avatarImage,
     popupSubmitButton
 } from '../utils/constants.js';
 
-
-//создаем API
-// const api = new Api({
-// 	url: 'https://mesto.nomoreparties.co/v1/cohort-55',
-// 	headers: {
-// 		authorization: '632a292c-702b-4f7c-9817-28c49bfdab1f',
-// 		'Content-type': 'application/json'
-// 	}
-// })
 
 //Создание карточки
 const createCard = (item) => {
@@ -144,7 +137,7 @@ const cardAddPopup = new PopupWithForm(popupAdd, (item) => {
 
 
     //добавляем api для добавление карточки
-    api.addCard(item.name, item.link, item.likes, item._id)
+    api.addCard(item.name, item.link, item.likes, item._id, item.avatar)
         .then(res => {
             //создание карточки 
             const newCard = createCard(res);
@@ -170,11 +163,11 @@ popupAddOpen.addEventListener('click', function () {
 });
 
 //popup редактирования профиля
-const userInfo = new UserInfo({ username: popupName, job: popupProf });
+const userInfo = new UserInfo({ username: popupName, job: popupProf, avatar: avatarImage });
 
 //редактикирование профиля
 const editProfilePopup = new PopupWithForm(popupEdit, (data) => {
-    const { name, job } = data
+    const { name, job} = data
 
     //вызываем метод api корректировки профиля
     api.editUserInfo(name, job)
@@ -199,6 +192,16 @@ popupEditOpen.addEventListener('click', () => {
     editProfilePopup.open();
 });
 
+//создаем новый попап для смены аватара
+const editAvatarPopup = new PopupWithForm(popupAvatar, (data) => {
+    api.changeAvatar(data)
+        .then(data => {
+            console.log(data)
+            userInfo.setUserInfo(data)
+            editAvatarPopup.close()
+        })
+});
+editAvatarPopup.setEventListeners();
 
 
 //создаем новые классы валидации
