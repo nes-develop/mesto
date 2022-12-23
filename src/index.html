@@ -19,7 +19,7 @@
         <section class="profile">
 
             <div class="profile__avatar"></div>
-            
+
             <div class="profile__info">
                 <h1 class="profile__name"></h1>
                 <p class="profile__title"></p>
@@ -76,27 +76,6 @@
         </div>
     </div>
 
-
-    <!--попап изображений-->
-    <div class="popup popup_image">
-        <div class="popup__container popup__container_image">
-            <button class="popup__close popup__close_image" type="button" aria-label="закрытие окна"></button>
-            <img src="#" alt="#" class="popup__image" />
-            <p class="popup__subtitle"></p>
-        </div>
-    </div>
-
-    <!-- попап подтверждения удаления -->
-    <div class="popup popup_delete">
-        <div class="popup__container popup__container_delete">
-            <button class="popup__close popup__close_image" type="button" aria-label="закрытие окна"></button>
-            <h2 class="popup__title popup__title_delete">Вы уверены?</h2>
-            <form class="popup__content __content_delete" novalidate>
-                <button class="popup__submit-button" type="submit">Да</button>
-            </form>
-        </div>
-    </div>
-
     <!-- попап смены аватара -->
     <div class="popup popup_avatar">
         <div class="popup__container popup__container_avatar">
@@ -106,16 +85,37 @@
 
             <form class="popup__content popup__content_avatar" name="edit-avatar" novalidate>
                 <!-- поле ссылки на фото для автара -->
-                <input class="popup__input popup__input_btn_name" type="url" name="edit-avatar" id='avatar-link'
+                <input class="popup__input popup__input_btn_avatar" type="url" name="avatar" id='avatar-link'
                     placeholder="Аватар">
-                <span class="popup__error avatar-error"></span>
-                
-                <button class="popup__submit-button" type="submit">Сохранить</button>
+                <span class="avatar-link-error popup__error avatar-error"></span>
+
+                <button disabled class="popup__submit-button" type="submit">Сохранить</button>
 
             </form>
         </div>
     </div>
 
+
+
+    <!-- попап подтверждения удаления -->
+    <div class="popup popup_delete">
+        <div class="popup__container popup__container_delete">
+            <button class="popup__close" type="button" aria-label="закрытие окна"></button>
+            <h2 class="popup__title popup__title_delete">Вы уверены?</h2>
+            <form class="popup__content __content_delete" novalidate>
+                <button class="popup__submit-button" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
+
+    <!--попап изображений-->
+    <div class="popup popup_image">
+        <div class="popup__container popup__container_image">
+            <button class="popup__close popup__close_image" type="button" aria-label="закрытие окна"></button>
+            <img src="#" alt="#" class="popup__image" />
+            <p class="popup__subtitle"></p>
+        </div>
+    </div>
 
 
 

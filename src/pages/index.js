@@ -15,7 +15,7 @@ let userId
 api.getUserInfo()
     .then(res => {
         //передаем по методу setUserInfo из класса UserInfo 
-        userInfo.setUserInfo(res.name, res.about);
+        userInfo.setUserInfo(res.name, res.about, res.avatar);
         userId = res._id
     })
 
@@ -37,6 +37,7 @@ api.getInitialCards()
 
 import {
     cardsContainer,
+    avatarImage,
     initialCards,
     nameInput,
     professionInput,
@@ -52,10 +53,21 @@ import {
     validationConfig,
     popupDelete,
     popupAvatar,
-    avatarImage,
     popupSubmitButton
 } from '../utils/constants.js';
 
+
+
+
+//валидация аватара
+const avatarFormValidator = new FormValidator(validationConfig, popupAvatar)
+avatarFormValidator.enableValidation()
+
+//создаем новые классы валидации
+const validatorPopupEdit = new FormValidator(validationConfig, popupForm);
+validatorPopupEdit.enableValidation();
+const validatorPopupAdd = new FormValidator(validationConfig, formAdd);
+validatorPopupAdd.enableValidation();
 
 //Создание карточки
 const createCard = (item) => {
@@ -135,7 +147,7 @@ deleteCardPopup.setEventListeners();
 //popup добавления карточки
 const cardAddPopup = new PopupWithForm(popupAdd, (item) => {
 
-
+    cardAddPopup.loading(true);
     //добавляем api для добавление карточки
     api.addCard(item.name, item.link, item.likes, item._id, item.avatar)
         .then(res => {
@@ -145,9 +157,9 @@ const cardAddPopup = new PopupWithForm(popupAdd, (item) => {
             defaultCardList.addItem(newCard);
             cardAddPopup.close();
         })
-
-
-
+        .finally(() => {
+            cardAddPopup.loading(false)
+        })
     validatorPopupAdd.disableSubmitButton();
 });
 
@@ -167,7 +179,9 @@ const userInfo = new UserInfo({ username: popupName, job: popupProf, avatar: ava
 
 //редактикирование профиля
 const editProfilePopup = new PopupWithForm(popupEdit, (data) => {
-    const { name, job} = data
+
+    editProfilePopup.loading(true);
+    const { name, job } = data
 
     //вызываем метод api корректировки профиля
     api.editUserInfo(name, job)
@@ -178,6 +192,9 @@ const editProfilePopup = new PopupWithForm(popupEdit, (data) => {
 
             //добавил временно для закрытия попапа, перенес в then чтобы только после ответа
             editProfilePopup.close()
+        })
+        .finally(() => {
+            editProfilePopup.loading(false)
         })
 });
 editProfilePopup.setEventListeners();
@@ -192,23 +209,34 @@ popupEditOpen.addEventListener('click', () => {
     editProfilePopup.open();
 });
 
+
+
+
 //создаем новый попап для смены аватара
 const editAvatarPopup = new PopupWithForm(popupAvatar, (data) => {
-    api.changeAvatar(data)
+    editAvatarPopup.loading(true);
+    const { name, job, avatar } = data
+    api.changeAvatar(avatar)
         .then(data => {
-            console.log(data)
-            userInfo.setUserInfo(data)
+            userInfo.setUserInfo(data.name, data.job, data.avatar);
             editAvatarPopup.close()
+
         })
+        .finally(() => {
+            editAvatarPopup.loading(false)
+        })
+
 });
 editAvatarPopup.setEventListeners();
 
 
-//создаем новые классы валидации
-const validatorPopupEdit = new FormValidator(validationConfig, popupForm);
-validatorPopupEdit.enableValidation();
-const validatorPopupAdd = new FormValidator(validationConfig, formAdd);
-validatorPopupAdd.enableValidation();
+//создаем новый попап для смены аватара
+avatarImage.addEventListener('click', () => {
+
+    //оставляем функцию disable, тк при заполнении формы и переоткрытии можно создать пустые
+    avatarFormValidator.disableSubmitButton(popupSubmitButton)
+    editAvatarPopup.open()
+})
 
 
 
