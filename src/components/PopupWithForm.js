@@ -16,7 +16,7 @@ export class PopupWithForm extends Popup {
 	_getInputValues() {
 		this._formValues = {};
 		//ищем 
-		this._inputList.forEach(input => {
+		this._inputList.forEach((input) => {
 			//ищем по ключу name из верстки, делая массив руками и вставляем значение value
 			this._formValues[input.getAttribute('name')] = input.value;
 		});
@@ -24,15 +24,6 @@ export class PopupWithForm extends Popup {
 		return this._formValues;
 	}
 
-	// setInputValues(data) {
-	// 	this._inputList.forEach((input) => {
-	// 		input.value = data[input.name];
-	// 	});
-	// }
-
-	changeSubmitHandler(newSubmitHandler) {
-		this._handleSubmit = newSubmitHandler;
-	}
 
 	setEventListeners() {
 		//вызываем родительский метод через super

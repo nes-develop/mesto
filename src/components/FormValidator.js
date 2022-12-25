@@ -12,7 +12,7 @@ export class FormValidator {
 	}
 
 	_setEventListeners() {
-		this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
+		// this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
 
 		this._inputList.forEach((inputElement) => {
 			inputElement.addEventListener('input', () => {
